@@ -25,7 +25,15 @@
   </head>
 
   <body>
-    <h1>Number guessing game</h1>
+    <h1>Number Guessing Game</h1>
+    <h2>Brought to you by Zotos</h2>
+
+    <div class="form">
+      <label for="nameField">Enter your name: </label><input type="text" id="nameField" class="nameField">
+      <input type="submit" value="Submit name" class="nameSubmit">
+    </div>
+
+    <h3 class="pname"></h3>
 
     <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
 
@@ -40,9 +48,13 @@
       <p class="lowOrHi"></p>
     </div>
 
+
+
     <script>
 
       // Your JavaScript goes here
+
+      
 
       let randomNumber = Math.floor(Math.random() * 100) + 1;
 
@@ -58,6 +70,15 @@
 
       guessField.focus();
 
+      const myH3 = document.querySelector('.pname');
+      const nameSubmit = document.querySelector('.nameSubmit');
+
+      function populatePlayerName() {
+        let playerName = nameField.value;
+        myH3.textContent = 'Current Player: ' + playerName;
+      }
+
+     nameSubmit.addEventListener('click', populatePlayerName);
 
       function checkGuess() {
         let userGuess = Number(guessField.value);
